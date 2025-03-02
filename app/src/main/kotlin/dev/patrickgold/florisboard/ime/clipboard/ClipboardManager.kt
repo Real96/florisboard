@@ -215,8 +215,10 @@ class ClipboardManager(
      * Wraps some plaintext in a ClipData and calls [addNewClip]
      */
     fun addNewPlaintext(newText: String) {
-        val newData = ClipboardItem.text(newText)
-        addNewClip(newData)
+        newText.replace("\r", "")
+            .split("\n")
+            .filter { it.isNotBlank() }
+            .forEach { line -> addNewClip(ClipboardItem.text(line)) }
     }
 
     /**
