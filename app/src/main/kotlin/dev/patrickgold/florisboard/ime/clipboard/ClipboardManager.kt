@@ -360,6 +360,7 @@ class ClipboardManager(
                 appContext.showShortToast("Failed to paste item.")
             }
         }
+        deleteClip(item)
     }
 
     /**
